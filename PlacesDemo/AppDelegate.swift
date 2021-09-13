@@ -6,14 +6,21 @@
 //
 
 import UIKit
+import Swinject
+import SwinjectAutoregistration
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    lazy var container : DIContainer = {
+        let c = DIContainer.init()
+        c.configure()
+        return c
+    }()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
         return true
     }
 

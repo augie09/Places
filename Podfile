@@ -7,6 +7,7 @@ target 'PlacesDemo' do
 
   # Pods for PlacesDemo
   pod 'Swinject'
+  pod 'SwinjectAutoregistration'
   pod 'RealmSwift'
   
   target 'PlacesDemoTests' do
