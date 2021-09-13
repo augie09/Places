@@ -10,6 +10,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchViewController" customModule="PlacesDemo" customModuleProvider="target">
             <connections>
+                <outlet property="filterButton" destination="ymm-yz-uF5" id="9gf-tJ-2BD"/>
+                <outlet property="searchBar" destination="0rf-ZL-hJI" id="ll0-eP-iZy"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -17,12 +19,47 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y8N-ms-C1f">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="128"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ymm-yz-uF5">
+                            <rect key="frame" x="20" y="82.5" width="35" height="30"/>
+                            <state key="normal" title="Filter"/>
+                        </button>
+                        <searchBar contentMode="redraw" placeholder="Search for a restaurant" translatesAutoresizingMaskIntoConstraints="NO" id="0rf-ZL-hJI">
+                            <rect key="frame" x="75" y="72" width="319" height="51"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="H2r-S6-Ydt"/>
+                            </connections>
+                        </searchBar>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="0rf-ZL-hJI" firstAttribute="leading" secondItem="ymm-yz-uF5" secondAttribute="trailing" constant="20" id="5c9-pd-MuF"/>
+                        <constraint firstItem="ymm-yz-uF5" firstAttribute="leading" secondItem="y8N-ms-C1f" secondAttribute="leading" constant="20" id="970-F6-uRe"/>
+                        <constraint firstAttribute="bottom" secondItem="0rf-ZL-hJI" secondAttribute="bottom" constant="5" id="F2r-IZ-Pps"/>
+                        <constraint firstAttribute="trailing" secondItem="0rf-ZL-hJI" secondAttribute="trailing" constant="20" id="bpM-xZ-UiX"/>
+                        <constraint firstAttribute="height" constant="128" id="ek5-ep-AHO"/>
+                        <constraint firstItem="ymm-yz-uF5" firstAttribute="centerY" secondItem="0rf-ZL-hJI" secondAttribute="centerY" id="f0a-kh-jVf"/>
+                    </constraints>
+                </view>
+            </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemTealColor"/>
-            <point key="canvasLocation" x="100" y="49"/>
+            <constraints>
+                <constraint firstItem="y8N-ms-C1f" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="AZK-Hq-R8l"/>
+                <constraint firstItem="y8N-ms-C1f" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="S4G-th-xaz"/>
+                <constraint firstItem="y8N-ms-C1f" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="tx6-fr-y15"/>
+            </constraints>
+            <point key="canvasLocation" x="100.00000000000001" y="48.883928571428569"/>
         </view>
     </objects>
     <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemTealColor">
             <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

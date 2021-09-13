@@ -12,7 +12,7 @@ struct GooglePlacesUrls: GooglePlacesUrlProviderProtocol {
     // URL Endpoint construction components
     let scheme = "https"
     let host = "maps.googleapis.com"
-    let nearbySearchPath = "/maps/api/place/nearbysearch"
+    let nearbySearchPath = "/maps/api/place/textsearch"
    
     func nearbySearchQuery(type: GooglePlacesType,
                            latitude: Double,
@@ -30,7 +30,7 @@ struct GooglePlacesUrls: GooglePlacesUrlProviderProtocol {
                                                   keyword: keyword,
                                                   apiKey: apiKey)
         
-        print("nearbySearchURL: \(components.url)")
+        print("nearbySearchURL: \(String(describing: components.url))")
         
         return components.url
     }
@@ -83,6 +83,6 @@ enum GooglePlacesQueryName : String {
     case location
     case type
     case radius
-    case keyword
+    case keyword = "query"
     case apiKey = "key"
 }
