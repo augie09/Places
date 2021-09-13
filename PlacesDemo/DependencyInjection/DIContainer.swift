@@ -7,6 +7,7 @@
 
 import Foundation
 import Swinject
+import SwinjectAutoregistration
 
 class DIContainer {
     private let container = Container()
@@ -30,6 +31,15 @@ class DIContainer {
             PlacesRepository.init(remote: r.resolve(GooglePlacesProtocol.self)!,
                                   local: r.resolve(FavoritePlacesProtocol.self)!)
         }
+        
+        // Register ViewModels
+        container.register(SearchViewModelProtocol.self) { r in
+            SearchViewModel.init(repo: r.resolve(PlacesRepositoryProtocol.self)!)
+        }
+        
+        // Register ViewControllers
+        container.autoregister(SearchViewController.self, initializer: SearchViewController.init)
+        
         
     }
     

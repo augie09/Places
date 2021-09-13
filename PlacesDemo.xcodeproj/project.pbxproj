@@ -10,10 +10,12 @@
 		03FF183E66041F725C8AC11D /* Pods_PlacesDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 512704B693E17C9837BD8743 /* Pods_PlacesDemo.framework */; };
 		499AD131E74C8261EF36CF6E /* Pods_PlacesDemo_PlacesDemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B448861E4C5342AA7343B6C3 /* Pods_PlacesDemo_PlacesDemoUITests.framework */; };
 		9B8B5F462E7F70E22FE481F0 /* Pods_PlacesDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B36B0C4DD8193735F895FB97 /* Pods_PlacesDemoTests.framework */; };
+		C390D3F726EFB9FB00E52CFD /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C390D3F526EFB9FB00E52CFD /* SearchViewController.swift */; };
+		C390D3F826EFB9FB00E52CFD /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C390D3F626EFB9FB00E52CFD /* SearchViewController.xib */; };
+		C390D3FA26EFBA3A00E52CFD /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C390D3F926EFBA3A00E52CFD /* SearchViewModel.swift */; };
+		C390D3FC26EFBA5300E52CFD /* SearchViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C390D3FB26EFBA5300E52CFD /* SearchViewModelProtocol.swift */; };
 		C3A99CB126EE4FE000234D6F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A99CB026EE4FE000234D6F /* AppDelegate.swift */; };
 		C3A99CB326EE4FE000234D6F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A99CB226EE4FE000234D6F /* SceneDelegate.swift */; };
-		C3A99CB526EE4FE000234D6F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A99CB426EE4FE000234D6F /* ViewController.swift */; };
-		C3A99CB826EE4FE000234D6F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3A99CB626EE4FE000234D6F /* Main.storyboard */; };
 		C3A99CBA26EE4FE200234D6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3A99CB926EE4FE200234D6F /* Assets.xcassets */; };
 		C3A99CBD26EE4FE200234D6F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3A99CBB26EE4FE200234D6F /* LaunchScreen.storyboard */; };
 		C3A99CC826EE4FE200234D6F /* PlacesDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A99CC726EE4FE200234D6F /* PlacesDemoTests.swift */; };
@@ -57,11 +59,13 @@
 		A159DE919BF681FA13D809B6 /* Pods-PlacesDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlacesDemoTests.debug.xcconfig"; path = "Target Support Files/Pods-PlacesDemoTests/Pods-PlacesDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B36B0C4DD8193735F895FB97 /* Pods_PlacesDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlacesDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B448861E4C5342AA7343B6C3 /* Pods_PlacesDemo_PlacesDemoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlacesDemo_PlacesDemoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C390D3F526EFB9FB00E52CFD /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		C390D3F626EFB9FB00E52CFD /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
+		C390D3F926EFBA3A00E52CFD /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		C390D3FB26EFBA5300E52CFD /* SearchViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModelProtocol.swift; sourceTree = "<group>"; };
 		C3A99CAD26EE4FE000234D6F /* PlacesDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlacesDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3A99CB026EE4FE000234D6F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C3A99CB226EE4FE000234D6F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C3A99CB426EE4FE000234D6F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		C3A99CB726EE4FE000234D6F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C3A99CB926EE4FE200234D6F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C3A99CBC26EE4FE200234D6F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C3A99CBE26EE4FE200234D6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -152,6 +156,7 @@
 		C3A99CAF26EE4FE000234D6F /* PlacesDemo */ = {
 			isa = PBXGroup;
 			children = (
+				C3E4EF3426EFA0CA002F4991 /* DependencyInjection */,
 				C3A99CE626EE534800234D6F /* DataSource */,
 				C3A99CE526EE534000234D6F /* Repository */,
 				C3A99CE426EE531200234D6F /* Model */,
@@ -187,7 +192,6 @@
 		C3A99CE026EE52E100234D6F /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C3A99CB626EE4FE000234D6F /* Main.storyboard */,
 				C3A99CBB26EE4FE200234D6F /* LaunchScreen.storyboard */,
 				C3A99CE326EE530400234D6F /* ViewControllers */,
 				C3A99CE226EE52FA00234D6F /* Xibs */,
@@ -198,6 +202,8 @@
 		C3A99CE126EE52ED00234D6F /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				C390D3FB26EFBA5300E52CFD /* SearchViewModelProtocol.swift */,
+				C390D3F926EFBA3A00E52CFD /* SearchViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -205,6 +211,7 @@
 		C3A99CE226EE52FA00234D6F /* Xibs */ = {
 			isa = PBXGroup;
 			children = (
+				C390D3F626EFB9FB00E52CFD /* SearchViewController.xib */,
 			);
 			path = Xibs;
 			sourceTree = "<group>";
@@ -212,7 +219,7 @@
 		C3A99CE326EE530400234D6F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				C3A99CB426EE4FE000234D6F /* ViewController.swift */,
+				C390D3F526EFB9FB00E52CFD /* SearchViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -237,7 +244,6 @@
 		C3A99CE626EE534800234D6F /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
-				C3E4EF3426EFA0CA002F4991 /* DependencyInjection */,
 				C3A99CE826EE536500234D6F /* FavoritePlacesLocal */,
 				C3A99CE726EE535400234D6F /* GooglePlacesRemote */,
 			);
@@ -405,7 +411,7 @@
 			files = (
 				C3A99CBD26EE4FE200234D6F /* LaunchScreen.storyboard in Resources */,
 				C3A99CBA26EE4FE200234D6F /* Assets.xcassets in Resources */,
-				C3A99CB826EE4FE000234D6F /* Main.storyboard in Resources */,
+				C390D3F826EFB9FB00E52CFD /* SearchViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -536,12 +542,14 @@
 				C3E4EF1E26EF4269002F4991 /* GooglePlacesProtocol.swift in Sources */,
 				C3E4EF2426EF4B92002F4991 /* GooglePlacesService.swift in Sources */,
 				C3E4EF2726EF4DE7002F4991 /* GooglePlacesUrlProviderProtocol.swift in Sources */,
+				C390D3F726EFB9FB00E52CFD /* SearchViewController.swift in Sources */,
 				C3E4EF2B26EF6E0C002F4991 /* PlacesRepositoryProtocol.swift in Sources */,
 				C3E4EF2926EF4E96002F4991 /* GooglePlacesUrls.swift in Sources */,
+				C390D3FA26EFBA3A00E52CFD /* SearchViewModel.swift in Sources */,
 				C3E4EF2F26EF6F53002F4991 /* FavoritePlacesProtocol.swift in Sources */,
 				C3E4EF2026EF4693002F4991 /* GooglePlacesResponse.swift in Sources */,
 				C3E4EF2226EF4804002F4991 /* GooglePlace.swift in Sources */,
-				C3A99CB526EE4FE000234D6F /* ViewController.swift in Sources */,
+				C390D3FC26EFBA5300E52CFD /* SearchViewModelProtocol.swift in Sources */,
 				C3E4EF3326EF708C002F4991 /* FavoritePlaces.swift in Sources */,
 				C3A99CB126EE4FE000234D6F /* AppDelegate.swift in Sources */,
 				C3E4EF2D26EF6E4F002F4991 /* Place.swift in Sources */,
@@ -584,14 +592,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		C3A99CB626EE4FE000234D6F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C3A99CB726EE4FE000234D6F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		C3A99CBB26EE4FE200234D6F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
