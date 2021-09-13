@@ -6,18 +6,17 @@
 //
 
 import UIKit
+import Combine
 
 class SearchViewController: UIViewController {
 
-    private let viewModel : SearchViewModelProtocol
+    @IBOutlet var searchBar: UISearchBar!
+    @IBOutlet var filterButton: UIButton!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        print("SearchViewController loaded")
-        // Do any additional setup after loading the view.
-    }
-
+    private let viewModel : SearchViewModelProtocol
+    private var cancellables: Set<AnyCancellable> = []
+    
+    //MARK: INIT
     init(viewModel: SearchViewModelProtocol){
         self.viewModel = viewModel
         super.init(nibName: "SearchViewController", bundle: nil)
@@ -26,14 +25,30 @@ class SearchViewController: UIViewController {
     required init?(coder: NSCoder){
         fatalError("init(coder:) has not been implemented")
     }
-    /*
-    // MARK: - Navigation
+    
+    //MARK: VIEW LIFECYCLE
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        bind()
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
     }
-    */
+
+    //MARK: BINDING
+    func bind() {
+        viewModel.placesPublisher
+            .receive(on: DispatchQueue.main)
+            .sink{ places in
+                print(places.count)
+            }
+            .store(in: &cancellables)
+    }
+
+}
+
+extension SearchViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
+        print("search bar: \(searchText)")
+        viewModel.textSubject.send(searchText)
+    }
 
 }
