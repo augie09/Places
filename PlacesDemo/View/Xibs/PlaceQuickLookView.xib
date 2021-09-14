@@ -26,7 +26,7 @@
                     <color key="textColor" systemColor="secondaryLabelColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="thumbnail" translatesAutoresizingMaskIntoConstraints="NO" id="GQP-15-esi">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="thumbnail" translatesAutoresizingMaskIntoConstraints="NO" id="GQP-15-esi">
                     <rect key="frame" x="0.0" y="50" width="64" height="64"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="64" id="2MV-WT-EXT"/>
@@ -71,6 +71,7 @@
             <connections>
                 <outlet property="ratings" destination="xH7-6y-OJe" id="IBA-46-Vle"/>
                 <outlet property="subtitle" destination="j7T-mz-1Ua" id="WB5-Ql-q3J"/>
+                <outlet property="thumbnail" destination="GQP-15-esi" id="nRi-8q-CE4"/>
                 <outlet property="title" destination="VUg-hs-b1M" id="lR4-eJ-nLW"/>
             </connections>
             <point key="canvasLocation" x="98.550724637681171" y="-110.49107142857143"/>

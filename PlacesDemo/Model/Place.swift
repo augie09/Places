@@ -18,7 +18,7 @@ struct Place {
     let favorite: Bool
     let latitude: Double
     let longitude: Double
-    let photo: URL?
+    let photo: String?
 
     func priceLevelSigns() -> String {
         guard let priceLevel = priceLevel, priceLevel > 0 else {

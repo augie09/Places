@@ -21,6 +21,9 @@ protocol SearchViewModelProtocol {
 
     // other UI data
     var searchPlaceHolder : String {get}
+    /// asks the remote datasource for a url to the photo reference
+    /// - Parameter from: Place photo reference value
+    func photoUrl(from: String) -> URL?
     
     // favorite button
     func favoritePressed(for indexPath: IndexPath)

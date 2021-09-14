@@ -60,4 +60,9 @@ struct GooglePlacesService: GooglePlacesProtocol {
             .eraseToAnyPublisher()
     }
     
+    /// asks the remote datasource for a url to the photo reference
+    /// - Parameter from: Place photo reference value
+    func photoUrl(from reference: String) -> URL? {
+        return urlProvider.photoUrl(from: reference, apiKey: apiKey)
+    }
 }

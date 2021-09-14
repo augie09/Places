@@ -86,4 +86,10 @@ class SearchViewModel: SearchViewModelProtocol, ObservableObject, Identifiable {
     private func unfavorite(_ place: Place) -> Place{
         return placesRepository.unfavorite(place)
     }
+    
+    /// asks the remote datasource for a url to the photo reference
+    /// - Parameter from: Place photo reference value
+    func photoUrl(from reference: String) -> URL? {
+        return placesRepository.photoUrl(from: reference)
+    }
 }

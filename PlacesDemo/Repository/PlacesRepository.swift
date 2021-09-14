@@ -47,7 +47,7 @@ struct PlacesRepository : PlacesRepositoryProtocol {
                               favorite: favoritePlaces.isFavorite(p.place_id),
                               latitude: p.location().0,
                               longitude: p.location().1,
-                              photo: nil)
+                              photo: p.photoReference())
                         )
                 }
                 return places}
@@ -63,5 +63,9 @@ struct PlacesRepository : PlacesRepositoryProtocol {
         return favoritePlaces.unfavorite(place)
     }
     
-    
+    /// asks the remote datasource for a url to the photo reference
+    /// - Parameter from: Place photo reference value
+    func photoUrl(from reference: String) -> URL? {
+        return googlePlaces.photoUrl(from: reference)
+    }
 }

@@ -12,7 +12,7 @@ class PlaceCell: UITableViewCell {
     @IBOutlet var favorite: UIButton!
     @IBOutlet var quicklookContainerView : UIView!
 
-    private var delegate : PlaceCellDelegate?
+    private weak var delegate : PlaceCellDelegate?
     
     lazy var placeQuickLookView : PlaceQuickLookView = {
         // init from xib
@@ -40,9 +40,11 @@ class PlaceCell: UITableViewCell {
     }
     
     func load(place: Place, delegate: PlaceCellDelegate){
-        placeQuickLookView.load(place: place)
         self.delegate = delegate
+        
+        placeQuickLookView.load(place: place, delegate: self)
         favorite.isSelected = place.favorite
+
     }
     
     @IBAction func favoritePressed(_ sender: Any) {
@@ -53,4 +55,13 @@ class PlaceCell: UITableViewCell {
         }
     }
     
+}
+
+extension PlaceCell : PlaceQuickLookViewDelegate {
+    func photoUrl(from reference: String) -> URL? {
+        if let delegate = delegate {
+            return delegate.photoUrl(from: reference)
+        }
+        return nil
+    }
 }

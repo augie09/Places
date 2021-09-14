@@ -78,7 +78,7 @@ extension FavoritePlaces {
         realmPlace.favorite = place.favorite
         realmPlace.latitude = place.latitude
         realmPlace.longitude = place.longitude
-        realmPlace.photo = place.photo?.absoluteString ?? ""
+        realmPlace.photo = place.photo ?? ""
         
         return realmPlace
     }

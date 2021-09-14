@@ -22,6 +22,11 @@ struct GooglePlace : Codable {
     func location() -> (Double, Double){
         return (geometry.location.lat, geometry.location.lng)
     }
+    
+    func photoReference() -> String? {
+        guard let photo = photos?.first else { return nil}
+        return photo.photo_reference
+    }
 }
 
 struct GooglePlacesPhotoReference : Codable {

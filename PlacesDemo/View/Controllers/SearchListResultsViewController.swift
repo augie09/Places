@@ -94,4 +94,8 @@ extension SearchListResultsViewController : PlaceCellDelegate {
         
         viewModel.favoritePressed(for: indexPath)
     }
+    
+    func photoUrl(from reference: String) -> URL? {
+        return viewModel.photoUrl(from: reference)
+    }
 }

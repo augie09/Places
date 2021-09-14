@@ -13,6 +13,7 @@ struct GooglePlacesUrls: GooglePlacesUrlProviderProtocol {
     let scheme = "https"
     let host = "maps.googleapis.com"
     let nearbySearchPath = "/maps/api/place/textsearch"
+    let photoPath = "/maps/api/place/photo"
    
     func nearbySearchQuery(type: GooglePlacesType,
                            latitude: Double,
@@ -71,6 +72,28 @@ struct GooglePlacesUrls: GooglePlacesUrlProviderProtocol {
     private func query(name: GooglePlacesQueryName, value: String) -> URLQueryItem {
         return URLQueryItem(name: name.rawValue, value:value)
     }
+    
+    /// asks the remote datasource for a url to the photo reference
+    /// - Parameter from: Place photo reference value
+    func photoUrl(from reference: String, apiKey: String) -> URL? {
+        
+        var urlComponents = URLComponents()
+        urlComponents.scheme = scheme
+        urlComponents.host = host
+        urlComponents.path = photoPath
+        
+        var queryItems = [URLQueryItem]()
+        queryItems.append(contentsOf: [
+            query(name: .maxwidth, value: "256"),
+            query(name: .photoreference, value: reference),
+            query(name: .apiKey, value: apiKey)
+        ])
+        
+        urlComponents.queryItems = queryItems
+        //print("photoUrl: \(String(describing: urlComponents.url))")
+        
+        return urlComponents.url
+    }
 }
 
 /// Supported output content types from google api
@@ -85,4 +108,6 @@ enum GooglePlacesQueryName : String {
     case radius
     case keyword = "query"
     case apiKey = "key"
+    case maxwidth
+    case photoreference
 }

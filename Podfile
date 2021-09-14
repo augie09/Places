@@ -10,6 +10,7 @@ target 'PlacesDemo' do
   pod 'SwinjectAutoregistration'
   pod 'RealmSwift'
   pod 'Cosmos'
+  pod 'SDWebImage'
   
   target 'PlacesDemoTests' do
     inherit! :search_paths
