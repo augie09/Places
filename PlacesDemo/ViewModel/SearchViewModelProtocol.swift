@@ -10,7 +10,7 @@ import Combine
 
 protocol SearchViewModelProtocol {
     
-    init(repo: PlacesRepositoryProtocol)
+    init(repo: PlacesRepositoryProtocol, locationService: LocationUtilityProtocol)
     
     // Places DataSource and Pubhlisher
     var placesPublisher: Published<[Place]>.Publisher {get}
@@ -27,4 +27,7 @@ protocol SearchViewModelProtocol {
     
     // favorite button
     func favoritePressed(for indexPath: IndexPath)
+    
+    // this could be a publisher
+    func viewDidLoad()
 }

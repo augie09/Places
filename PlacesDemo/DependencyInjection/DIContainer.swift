@@ -14,6 +14,11 @@ class DIContainer {
     
     func configure() {
         
+        // Register our utilities
+        container.register(LocationUtilityProtocol.self) { _ in
+            LocationUtility()
+        }
+        
         // Register our Datasources
         container.register(FavoritePlacesProtocol.self) { _ in
             FavoritePlaces.init()
@@ -34,7 +39,7 @@ class DIContainer {
         
         // Register ViewModels
         container.register(SearchViewModelProtocol.self) { r in
-            SearchViewModel.init(repo: r.resolve(PlacesRepositoryProtocol.self)!)
+            SearchViewModel.init(repo: r.resolve(PlacesRepositoryProtocol.self)!, locationService: r.resolve(LocationUtilityProtocol.self)!)
         }.inObjectScope(.container)
         
         // Register ViewControllers

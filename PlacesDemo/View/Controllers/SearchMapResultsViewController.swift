@@ -7,9 +7,12 @@
 
 import UIKit
 import Combine
+import MapKit
 
 class SearchMapResultsViewController: UIViewController {
 
+    @IBOutlet private var mapView: MKMapView!
+    
     private let viewModel : SearchViewModelProtocol
     private var cancellables: Set<AnyCancellable> = []
     

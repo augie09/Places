@@ -10,23 +10,28 @@ import Combine
 
 class SearchViewModel: SearchViewModelProtocol, ObservableObject, Identifiable {
     
+    // Dependencies
     private let placesRepository : PlacesRepositoryProtocol
+    private let locationService : LocationUtilityProtocol
      
+    // Combine Stuff
     @Published var places: [Place] = []
     var placesPublisher: Published<[Place]>.Publisher { $places }
-    
     var textSubject: CurrentValueSubject<String, Never> = CurrentValueSubject.init("")
-    
     private var disposables = Set<AnyCancellable>()
     
-    private var latitude : Double = -33.8670522  //FIXME:- get from CoreLocation
-    private var longitude: Double = 151.1957362
-    
+    // currently we only need to get location once, even though it is setup for event streaming
+    private var firstKnownLocation: (latitude: Double, longitude: Double)?
+//
+//    private var latitude : Double = -33.8670522  //FIXME:- get from CoreLocation
+//    private var longitude: Double = 151.1957362
+    // Static data for UI
     var searchPlaceHolder : String { return "Search for a restaurant"}  //FIXME:- move to a localized string file
     
     //MARK: INIT
-    required init(repo: PlacesRepositoryProtocol){
+    required init(repo: PlacesRepositoryProtocol, locationService: LocationUtilityProtocol){
         self.placesRepository = repo
+        self.locationService = locationService
         
         self.textSubject
             .debounce(for: .milliseconds(300), scheduler: DispatchQueue.global())
@@ -36,13 +41,30 @@ class SearchViewModel: SearchViewModelProtocol, ObservableObject, Identifiable {
                 print("textSubject")
                 fetchPlaces(with: searchField)
             }.store(in: &disposables)
+        
+        self.locationService.locationTuple
+            .debounce(for: .milliseconds(300), scheduler: DispatchQueue.global())
+            .sink { (_) in
+                //
+            } receiveValue: { [self] (location) in
+                
+                if firstKnownLocation == nil {
+                    firstKnownLocation = location
+                    fetchPlaces(with: textSubject.value)
+                }
+            }.store(in: &disposables)
     }
     
     //MARK: PROTOCOL METHODS
     func fetchPlaces(with searchText: String?){
         
-        placesRepository.nearbySearch(latitude: latitude,
-                                      longitude: longitude,
+        guard let location = firstKnownLocation else {
+            print("location not known")
+            return
+        }
+        
+        placesRepository.nearbySearch(latitude: location.latitude,
+                                      longitude: location.longitude,
                                       keyword: searchText ?? nil)
             .receive(on: DispatchQueue.main)
             
@@ -65,6 +87,12 @@ class SearchViewModel: SearchViewModelProtocol, ObservableObject, Identifiable {
             
             .store(in: &disposables)
         
+    }
+    
+    func viewDidLoad(){
+        if !locationService.hasRequested(){
+            locationService.requestPermission()
+        }
     }
     
     // favorite button

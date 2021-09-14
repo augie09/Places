@@ -25,6 +25,7 @@
 		C390D41226F1078400E52CFD /* PlaceQuickLookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C390D41126F1078400E52CFD /* PlaceQuickLookView.swift */; };
 		C390D41426F1079C00E52CFD /* PlaceQuickLookView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C390D41326F1079C00E52CFD /* PlaceQuickLookView.xib */; };
 		C390D41626F11F4200E52CFD /* PlaceCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C390D41526F11F4200E52CFD /* PlaceCellDelegate.swift */; };
+		C390D41A26F135F100E52CFD /* LocationUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = C390D41926F135F100E52CFD /* LocationUtility.swift */; };
 		C3A99CB126EE4FE000234D6F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A99CB026EE4FE000234D6F /* AppDelegate.swift */; };
 		C3A99CB326EE4FE000234D6F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A99CB226EE4FE000234D6F /* SceneDelegate.swift */; };
 		C3A99CBA26EE4FE200234D6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3A99CB926EE4FE200234D6F /* Assets.xcassets */; };
@@ -85,6 +86,7 @@
 		C390D41126F1078400E52CFD /* PlaceQuickLookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceQuickLookView.swift; sourceTree = "<group>"; };
 		C390D41326F1079C00E52CFD /* PlaceQuickLookView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaceQuickLookView.xib; sourceTree = "<group>"; };
 		C390D41526F11F4200E52CFD /* PlaceCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCellDelegate.swift; sourceTree = "<group>"; };
+		C390D41926F135F100E52CFD /* LocationUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationUtility.swift; sourceTree = "<group>"; };
 		C3A99CAD26EE4FE000234D6F /* PlacesDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlacesDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3A99CB026EE4FE000234D6F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C3A99CB226EE4FE000234D6F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -163,6 +165,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		C390D41826F135D500E52CFD /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				C390D41926F135F100E52CFD /* LocationUtility.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
 		C3A99CA426EE4FE000234D6F = {
 			isa = PBXGroup;
 			children = (
@@ -194,6 +204,7 @@
 				C3A99CE426EE531200234D6F /* Model */,
 				C3A99CE126EE52ED00234D6F /* ViewModel */,
 				C3A99CE026EE52E100234D6F /* View */,
+				C390D41826F135D500E52CFD /* Utility */,
 				C390D40726F0B91A00E52CFD /* Extensions */,
 				C3A99CB026EE4FE000234D6F /* AppDelegate.swift */,
 				C3A99CB226EE4FE000234D6F /* SceneDelegate.swift */,
@@ -587,6 +598,7 @@
 				C3E4EF1E26EF4269002F4991 /* GooglePlacesProtocol.swift in Sources */,
 				C3E4EF2426EF4B92002F4991 /* GooglePlacesService.swift in Sources */,
 				C390D41026F0F69300E52CFD /* UINavigationController+.swift in Sources */,
+				C390D41A26F135F100E52CFD /* LocationUtility.swift in Sources */,
 				C390D3FF26F0136700E52CFD /* SearchListResultsViewController.swift in Sources */,
 				C3E4EF2726EF4DE7002F4991 /* GooglePlacesUrlProviderProtocol.swift in Sources */,
 				C390D41226F1078400E52CFD /* PlaceQuickLookView.swift in Sources */,

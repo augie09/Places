@@ -38,6 +38,8 @@ class SearchViewController: UIViewController {
         setupNavigationBar()
 
         toggle()
+        
+        viewModel.viewDidLoad()
     }
     
     private lazy var searchController: UISearchController = {
