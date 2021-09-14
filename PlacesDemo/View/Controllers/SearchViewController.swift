@@ -10,7 +10,7 @@ import Combine
 
 class SearchViewController: UIViewController {
 
-    @IBOutlet var searchBar: UISearchBar!
+   // @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var filterButton: UIButton!
     @IBOutlet var childToggleButton: UIButton!
     @IBOutlet var containerView: UIView!
@@ -18,10 +18,10 @@ class SearchViewController: UIViewController {
     private let viewModel : SearchViewModelProtocol
     private var cancellables: Set<AnyCancellable> = []
     
-    private var childrenVC: [SearchChildVCProtocol]
+    private var childrenVC: [UIViewController]
     
     //MARK: INIT
-    init(viewModel: SearchViewModelProtocol, childrenVC: [SearchChildVCProtocol]) {
+    init(viewModel: SearchViewModelProtocol, childrenVC: [UIViewController]) {
         self.viewModel = viewModel
         self.childrenVC = childrenVC
         super.init(nibName: "SearchViewController", bundle: nil)
@@ -34,20 +34,35 @@ class SearchViewController: UIViewController {
     //MARK: VIEW LIFECYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("viewDidLoad: \(childrenVC.count)")
+
+        setupNavigationBar()
+
         toggle()
-        bind()
-
     }
+    
+    private lazy var searchController: UISearchController = {
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.searchBar.placeholder = viewModel.searchPlaceHolder
+        searchController.searchBar.delegate = self
+        
+        return searchController
+    }()
 
-    //MARK: BINDING
-    func bind() {
-        viewModel.placesPublisher
-            .receive(on: DispatchQueue.main)
-            .sink{ places in
-                print(places.count)
-            }
-            .store(in: &cancellables)
+    private func setupNavigationBar() {
+        navigationItem.searchController = searchController
+        
+        self.navigationController?.navigationBar.barTintColor = UIColor.white
+        self.navigationController?.navigationBar.backgroundColor = UIColor.white
+        self.navigationController?.addCustomBottomLine(color: UIColor.lightGray, height: 0.5)
+
+        // prevent nav bar collapsing when user scrolls - borrowed from StackOverflow
+        let dummyView = UIView()
+        view.addSubview(dummyView)
+        view.sendSubviewToBack(dummyView)
+        
+        navigationItem.title = "Places"  //FIXME- localized string
     }
 
 }
@@ -81,11 +96,18 @@ extension SearchViewController {
             print("childrenVC.first!.currentChild()")
             childrenVC.first?.remove()
             add(childVC: childrenVC.last!)
+            
+            childToggleButton.setImage(UIImage.init(named: "toggleList"), for: .normal)
+            childToggleButton.setTitle("List", for: .normal)
         }
         else {
             print("NOT childrenVC.first!.currentChild()")
             childrenVC.last?.remove()
             add(childVC: childrenVC.first!)
+        
+            childToggleButton.setImage(UIImage.init(named: "togglePin"), for: .normal)
+            childToggleButton.setTitle("Map", for: .normal)
         }
     }
 }
+

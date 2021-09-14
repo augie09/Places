@@ -1,4 +1,5 @@
 PODS:
+  - Cosmos (23.0.0)
   - Cuckoo (1.5.1):
     - Cuckoo/Swift (= 1.5.1)
   - Cuckoo/Swift (1.5.1)
@@ -7,31 +8,40 @@ PODS:
   - Realm/Headers (10.15.0)
   - RealmSwift (10.15.0):
     - Realm (= 10.15.0)
+  - SDWebImage (5.11.1):
+    - SDWebImage/Core (= 5.11.1)
+  - SDWebImage/Core (5.11.1)
   - Swinject (2.8.0)
   - SwinjectAutoregistration (2.7.0):
     - Swinject (~> 2.7)
 
 DEPENDENCIES:
+  - Cosmos
   - Cuckoo
   - RealmSwift
+  - SDWebImage
   - Swinject
   - SwinjectAutoregistration
 
 SPEC REPOS:
   trunk:
+    - Cosmos
     - Cuckoo
     - Realm
     - RealmSwift
+    - SDWebImage
     - Swinject
     - SwinjectAutoregistration
 
 SPEC CHECKSUMS:
+  Cosmos: b5c6a9a637e28a061b54c8f8b1d8529d7d4db73f
   Cuckoo: 9124fe138270854903483c270370e6e7658fbc9b
   Realm: 13e805eb23d3eb8d8bb700d9cf9761f4b625b389
   RealmSwift: 51b29bb4e19fe7322c8a599cf3494b8a08888ef1
+  SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   Swinject: db795b8d6d78559b25fbebb0170d2635be1176e2
   SwinjectAutoregistration: 330f5012642a8b5c89a8a4adb0c5e52df07382c0
 
-PODFILE CHECKSUM: 7cbf834d8634a7554ec41c0705f45681095869eb
+PODFILE CHECKSUM: e3f61d9d59a7653e2e0c8552027c45ce66cf5a86
 
 COCOAPODS: 1.11.0

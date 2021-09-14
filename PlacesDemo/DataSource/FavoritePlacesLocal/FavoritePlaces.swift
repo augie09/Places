@@ -29,7 +29,8 @@ class FavoritePlaces: FavoritePlacesProtocol {
     }
     
     func unfavorite(_ place: Place) -> Place {
-        guard !place.favorite else {
+
+        guard place.favorite else {
             //item already not favorite
             print("ERROR: item already not favorite ")
             return place
@@ -77,7 +78,7 @@ extension FavoritePlaces {
         realmPlace.favorite = place.favorite
         realmPlace.latitude = place.latitude
         realmPlace.longitude = place.longitude
-        realmPlace.photo = place.photo?.absoluteString ?? ""
+        realmPlace.photo = place.photo ?? ""
         
         return realmPlace
     }

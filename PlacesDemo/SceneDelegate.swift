@@ -29,9 +29,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window.makeKeyAndVisible()
         }
         
-        //FIXME:- move to coordinator
+        //FIXME:- move all of this to a coordinator
+        let navController = UINavigationController.init()
         let initialViewController = container.resolve(type: SearchViewController.self)!
-        window?.rootViewController = initialViewController
+        navController.setViewControllers([initialViewController], animated: false)
+        window?.rootViewController = navController
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

@@ -18,7 +18,13 @@
 		C390D40026F0136700E52CFD /* SearchListResultsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C390D3FE26F0136700E52CFD /* SearchListResultsViewController.xib */; };
 		C390D40326F0137D00E52CFD /* SearchMapResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C390D40126F0137D00E52CFD /* SearchMapResultsViewController.swift */; };
 		C390D40426F0137D00E52CFD /* SearchMapResultsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C390D40226F0137D00E52CFD /* SearchMapResultsViewController.xib */; };
-		C390D40626F0201900E52CFD /* SearchChildVCProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C390D40526F0201900E52CFD /* SearchChildVCProtocol.swift */; };
+		C390D40A26F0B93900E52CFD /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C390D40926F0B93900E52CFD /* UIViewController+.swift */; };
+		C390D40D26F0BB6600E52CFD /* PlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C390D40B26F0BB6600E52CFD /* PlaceCell.swift */; };
+		C390D40E26F0BB6600E52CFD /* PlaceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C390D40C26F0BB6600E52CFD /* PlaceCell.xib */; };
+		C390D41026F0F69300E52CFD /* UINavigationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C390D40F26F0F69300E52CFD /* UINavigationController+.swift */; };
+		C390D41226F1078400E52CFD /* PlaceQuickLookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C390D41126F1078400E52CFD /* PlaceQuickLookView.swift */; };
+		C390D41426F1079C00E52CFD /* PlaceQuickLookView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C390D41326F1079C00E52CFD /* PlaceQuickLookView.xib */; };
+		C390D41626F11F4200E52CFD /* PlaceCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C390D41526F11F4200E52CFD /* PlaceCellDelegate.swift */; };
 		C3A99CB126EE4FE000234D6F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A99CB026EE4FE000234D6F /* AppDelegate.swift */; };
 		C3A99CB326EE4FE000234D6F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A99CB226EE4FE000234D6F /* SceneDelegate.swift */; };
 		C3A99CBA26EE4FE200234D6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3A99CB926EE4FE200234D6F /* Assets.xcassets */; };
@@ -72,7 +78,13 @@
 		C390D3FE26F0136700E52CFD /* SearchListResultsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchListResultsViewController.xib; sourceTree = "<group>"; };
 		C390D40126F0137D00E52CFD /* SearchMapResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMapResultsViewController.swift; sourceTree = "<group>"; };
 		C390D40226F0137D00E52CFD /* SearchMapResultsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchMapResultsViewController.xib; sourceTree = "<group>"; };
-		C390D40526F0201900E52CFD /* SearchChildVCProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchChildVCProtocol.swift; sourceTree = "<group>"; };
+		C390D40926F0B93900E52CFD /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
+		C390D40B26F0BB6600E52CFD /* PlaceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCell.swift; sourceTree = "<group>"; };
+		C390D40C26F0BB6600E52CFD /* PlaceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaceCell.xib; sourceTree = "<group>"; };
+		C390D40F26F0F69300E52CFD /* UINavigationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+.swift"; sourceTree = "<group>"; };
+		C390D41126F1078400E52CFD /* PlaceQuickLookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceQuickLookView.swift; sourceTree = "<group>"; };
+		C390D41326F1079C00E52CFD /* PlaceQuickLookView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaceQuickLookView.xib; sourceTree = "<group>"; };
+		C390D41526F11F4200E52CFD /* PlaceCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCellDelegate.swift; sourceTree = "<group>"; };
 		C3A99CAD26EE4FE000234D6F /* PlacesDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlacesDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3A99CB026EE4FE000234D6F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C3A99CB226EE4FE000234D6F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -141,6 +153,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C390D40726F0B91A00E52CFD /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C3E4EF3726EFA308002F4991 /* Bundle+.swift */,
+				C390D40926F0B93900E52CFD /* UIViewController+.swift */,
+				C390D40F26F0F69300E52CFD /* UINavigationController+.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		C3A99CA426EE4FE000234D6F = {
 			isa = PBXGroup;
 			children = (
@@ -172,11 +194,11 @@
 				C3A99CE426EE531200234D6F /* Model */,
 				C3A99CE126EE52ED00234D6F /* ViewModel */,
 				C3A99CE026EE52E100234D6F /* View */,
+				C390D40726F0B91A00E52CFD /* Extensions */,
 				C3A99CB026EE4FE000234D6F /* AppDelegate.swift */,
 				C3A99CB226EE4FE000234D6F /* SceneDelegate.swift */,
 				C3A99CB926EE4FE200234D6F /* Assets.xcassets */,
 				C3A99CBE26EE4FE200234D6F /* Info.plist */,
-				C3E4EF3726EFA308002F4991 /* Bundle+.swift */,
 			);
 			path = PlacesDemo;
 			sourceTree = "<group>";
@@ -203,7 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				C3A99CBB26EE4FE200234D6F /* LaunchScreen.storyboard */,
-				C3A99CE326EE530400234D6F /* ViewControllers */,
+				C3A99CE326EE530400234D6F /* Controllers */,
 				C3A99CE226EE52FA00234D6F /* Xibs */,
 			);
 			path = View;
@@ -224,19 +246,23 @@
 				C390D3F626EFB9FB00E52CFD /* SearchViewController.xib */,
 				C390D3FE26F0136700E52CFD /* SearchListResultsViewController.xib */,
 				C390D40226F0137D00E52CFD /* SearchMapResultsViewController.xib */,
+				C390D40C26F0BB6600E52CFD /* PlaceCell.xib */,
+				C390D41326F1079C00E52CFD /* PlaceQuickLookView.xib */,
 			);
 			path = Xibs;
 			sourceTree = "<group>";
 		};
-		C3A99CE326EE530400234D6F /* ViewControllers */ = {
+		C3A99CE326EE530400234D6F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				C390D3F526EFB9FB00E52CFD /* SearchViewController.swift */,
-				C390D40526F0201900E52CFD /* SearchChildVCProtocol.swift */,
 				C390D3FD26F0136700E52CFD /* SearchListResultsViewController.swift */,
 				C390D40126F0137D00E52CFD /* SearchMapResultsViewController.swift */,
+				C390D40B26F0BB6600E52CFD /* PlaceCell.swift */,
+				C390D41526F11F4200E52CFD /* PlaceCellDelegate.swift */,
+				C390D41126F1078400E52CFD /* PlaceQuickLookView.swift */,
 			);
-			path = ViewControllers;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		C3A99CE426EE531200234D6F /* Model */ = {
@@ -426,7 +452,9 @@
 			files = (
 				C3A99CBD26EE4FE200234D6F /* LaunchScreen.storyboard in Resources */,
 				C3A99CBA26EE4FE200234D6F /* Assets.xcassets in Resources */,
+				C390D41426F1079C00E52CFD /* PlaceQuickLookView.xib in Resources */,
 				C390D3F826EFB9FB00E52CFD /* SearchViewController.xib in Resources */,
+				C390D40E26F0BB6600E52CFD /* PlaceCell.xib in Resources */,
 				C390D40426F0137D00E52CFD /* SearchMapResultsViewController.xib in Resources */,
 				C390D40026F0136700E52CFD /* SearchListResultsViewController.xib in Resources */,
 			);
@@ -558,12 +586,15 @@
 			files = (
 				C3E4EF1E26EF4269002F4991 /* GooglePlacesProtocol.swift in Sources */,
 				C3E4EF2426EF4B92002F4991 /* GooglePlacesService.swift in Sources */,
+				C390D41026F0F69300E52CFD /* UINavigationController+.swift in Sources */,
 				C390D3FF26F0136700E52CFD /* SearchListResultsViewController.swift in Sources */,
 				C3E4EF2726EF4DE7002F4991 /* GooglePlacesUrlProviderProtocol.swift in Sources */,
+				C390D41226F1078400E52CFD /* PlaceQuickLookView.swift in Sources */,
 				C390D3F726EFB9FB00E52CFD /* SearchViewController.swift in Sources */,
+				C390D41626F11F4200E52CFD /* PlaceCellDelegate.swift in Sources */,
 				C3E4EF2B26EF6E0C002F4991 /* PlacesRepositoryProtocol.swift in Sources */,
 				C3E4EF2926EF4E96002F4991 /* GooglePlacesUrls.swift in Sources */,
-				C390D40626F0201900E52CFD /* SearchChildVCProtocol.swift in Sources */,
+				C390D40A26F0B93900E52CFD /* UIViewController+.swift in Sources */,
 				C390D3FA26EFBA3A00E52CFD /* SearchViewModel.swift in Sources */,
 				C3E4EF2F26EF6F53002F4991 /* FavoritePlacesProtocol.swift in Sources */,
 				C3E4EF2026EF4693002F4991 /* GooglePlacesResponse.swift in Sources */,
@@ -573,6 +604,7 @@
 				C3E4EF3326EF708C002F4991 /* FavoritePlaces.swift in Sources */,
 				C3A99CB126EE4FE000234D6F /* AppDelegate.swift in Sources */,
 				C3E4EF2D26EF6E4F002F4991 /* Place.swift in Sources */,
+				C390D40D26F0BB6600E52CFD /* PlaceCell.swift in Sources */,
 				C3A99CB326EE4FE000234D6F /* SceneDelegate.swift in Sources */,
 				C3E4EF3826EFA308002F4991 /* Bundle+.swift in Sources */,
 				C3E4EF3126EF7040002F4991 /* PlacesRepository.swift in Sources */,
