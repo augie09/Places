@@ -21,7 +21,8 @@ class SearchViewModel: SearchViewModelProtocol, ObservableObject, Identifiable {
     private var disposables = Set<AnyCancellable>()
     
     // currently we only need to get location once, even though it is setup for event streaming
-    private var firstKnownLocation: (latitude: Double, longitude: Double)?
+    var firstKnownLocation: CurrentValueSubject<(latitude: Double, longitude: Double)?, Never> = CurrentValueSubject.init(nil)
+    let radius: Int = 1500
 //
 //    private var latitude : Double = -33.8670522  //FIXME:- get from CoreLocation
 //    private var longitude: Double = 151.1957362
@@ -33,6 +34,7 @@ class SearchViewModel: SearchViewModelProtocol, ObservableObject, Identifiable {
         self.placesRepository = repo
         self.locationService = locationService
         
+        // Observe SearchBar text input changes
         self.textSubject
             .debounce(for: .milliseconds(300), scheduler: DispatchQueue.global())
             .sink { (_) in
@@ -42,14 +44,16 @@ class SearchViewModel: SearchViewModelProtocol, ObservableObject, Identifiable {
                 fetchPlaces(with: searchField)
             }.store(in: &disposables)
         
+        // Observe Location changes
         self.locationService.locationTuple
             .debounce(for: .milliseconds(300), scheduler: DispatchQueue.global())
             .sink { (_) in
                 //
             } receiveValue: { [self] (location) in
                 
-                if firstKnownLocation == nil {
-                    firstKnownLocation = location
+                // this apps requirements is only interested in initial user location, not updating as user moves
+                if firstKnownLocation.value == nil, let location = location {
+                    firstKnownLocation.send(location)
                     fetchPlaces(with: textSubject.value)
                 }
             }.store(in: &disposables)
@@ -58,13 +62,14 @@ class SearchViewModel: SearchViewModelProtocol, ObservableObject, Identifiable {
     //MARK: PROTOCOL METHODS
     func fetchPlaces(with searchText: String?){
         
-        guard let location = firstKnownLocation else {
+        guard let location = firstKnownLocation.value else {
             print("location not known")
             return
         }
         
         placesRepository.nearbySearch(latitude: location.latitude,
                                       longitude: location.longitude,
+                                      radius: radius,
                                       keyword: searchText ?? nil)
             .receive(on: DispatchQueue.main)
             
@@ -95,6 +100,7 @@ class SearchViewModel: SearchViewModelProtocol, ObservableObject, Identifiable {
         }
     }
     
+    //MARK: FAVORITES
     // favorite button
     func favoritePressed(for indexPath: IndexPath){
         print("SearchViewModel: favoritePressed")
@@ -115,6 +121,7 @@ class SearchViewModel: SearchViewModelProtocol, ObservableObject, Identifiable {
         return placesRepository.unfavorite(place)
     }
     
+    //MARK: PHOTOS
     /// asks the remote datasource for a url to the photo reference
     /// - Parameter from: Place photo reference value
     func photoUrl(from reference: String) -> URL? {

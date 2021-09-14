@@ -95,7 +95,6 @@ extension SearchViewController {
 
     func toggle() {
         if childrenVC.first!.currentChild() {
-            print("childrenVC.first!.currentChild()")
             childrenVC.first?.remove()
             add(childVC: childrenVC.last!)
             
@@ -103,7 +102,6 @@ extension SearchViewController {
             childToggleButton.setTitle("List", for: .normal)
         }
         else {
-            print("NOT childrenVC.first!.currentChild()")
             childrenVC.last?.remove()
             add(childVC: childrenVC.first!)
         

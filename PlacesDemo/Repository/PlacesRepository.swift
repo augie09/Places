@@ -15,7 +15,6 @@ struct PlacesRepository : PlacesRepositoryProtocol {
     
     //FIXME:- these should be moved to a filter component
     private let searchType: GooglePlacesType = .restaurant
-    private let radius: Int = 1500
     
     init(remote: GooglePlacesProtocol,
          local: FavoritePlacesProtocol) {
@@ -25,6 +24,7 @@ struct PlacesRepository : PlacesRepositoryProtocol {
     
     func nearbySearch(latitude: Double,
                       longitude: Double,
+                      radius: Int,
                       keyword: String?) -> AnyPublisher<[Place], Error> {
         
         // Repository will first execute a search against remote datasource

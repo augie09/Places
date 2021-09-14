@@ -30,4 +30,7 @@ protocol SearchViewModelProtocol {
     
     // this could be a publisher
     func viewDidLoad()
+    
+    var firstKnownLocation: CurrentValueSubject<(latitude: Double, longitude: Double)?, Never>{get set}
+    var radius: Int { get }
 }

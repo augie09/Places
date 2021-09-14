@@ -15,6 +15,7 @@ protocol PlacesRepositoryProtocol {
     
     func nearbySearch(latitude: Double,
                       longitude: Double,
+                      radius: Int,
                       keyword: String?) -> AnyPublisher<[Place], Error>
     
     func favorite(_ place: Place) -> Place
