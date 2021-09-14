@@ -14,6 +14,11 @@
 		C390D3F826EFB9FB00E52CFD /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C390D3F626EFB9FB00E52CFD /* SearchViewController.xib */; };
 		C390D3FA26EFBA3A00E52CFD /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C390D3F926EFBA3A00E52CFD /* SearchViewModel.swift */; };
 		C390D3FC26EFBA5300E52CFD /* SearchViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C390D3FB26EFBA5300E52CFD /* SearchViewModelProtocol.swift */; };
+		C390D3FF26F0136700E52CFD /* SearchListResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C390D3FD26F0136700E52CFD /* SearchListResultsViewController.swift */; };
+		C390D40026F0136700E52CFD /* SearchListResultsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C390D3FE26F0136700E52CFD /* SearchListResultsViewController.xib */; };
+		C390D40326F0137D00E52CFD /* SearchMapResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C390D40126F0137D00E52CFD /* SearchMapResultsViewController.swift */; };
+		C390D40426F0137D00E52CFD /* SearchMapResultsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C390D40226F0137D00E52CFD /* SearchMapResultsViewController.xib */; };
+		C390D40626F0201900E52CFD /* SearchChildVCProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C390D40526F0201900E52CFD /* SearchChildVCProtocol.swift */; };
 		C3A99CB126EE4FE000234D6F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A99CB026EE4FE000234D6F /* AppDelegate.swift */; };
 		C3A99CB326EE4FE000234D6F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A99CB226EE4FE000234D6F /* SceneDelegate.swift */; };
 		C3A99CBA26EE4FE200234D6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3A99CB926EE4FE200234D6F /* Assets.xcassets */; };
@@ -63,6 +68,11 @@
 		C390D3F626EFB9FB00E52CFD /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
 		C390D3F926EFBA3A00E52CFD /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		C390D3FB26EFBA5300E52CFD /* SearchViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModelProtocol.swift; sourceTree = "<group>"; };
+		C390D3FD26F0136700E52CFD /* SearchListResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListResultsViewController.swift; sourceTree = "<group>"; };
+		C390D3FE26F0136700E52CFD /* SearchListResultsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchListResultsViewController.xib; sourceTree = "<group>"; };
+		C390D40126F0137D00E52CFD /* SearchMapResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMapResultsViewController.swift; sourceTree = "<group>"; };
+		C390D40226F0137D00E52CFD /* SearchMapResultsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchMapResultsViewController.xib; sourceTree = "<group>"; };
+		C390D40526F0201900E52CFD /* SearchChildVCProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchChildVCProtocol.swift; sourceTree = "<group>"; };
 		C3A99CAD26EE4FE000234D6F /* PlacesDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlacesDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3A99CB026EE4FE000234D6F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C3A99CB226EE4FE000234D6F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -212,6 +222,8 @@
 			isa = PBXGroup;
 			children = (
 				C390D3F626EFB9FB00E52CFD /* SearchViewController.xib */,
+				C390D3FE26F0136700E52CFD /* SearchListResultsViewController.xib */,
+				C390D40226F0137D00E52CFD /* SearchMapResultsViewController.xib */,
 			);
 			path = Xibs;
 			sourceTree = "<group>";
@@ -220,6 +232,9 @@
 			isa = PBXGroup;
 			children = (
 				C390D3F526EFB9FB00E52CFD /* SearchViewController.swift */,
+				C390D40526F0201900E52CFD /* SearchChildVCProtocol.swift */,
+				C390D3FD26F0136700E52CFD /* SearchListResultsViewController.swift */,
+				C390D40126F0137D00E52CFD /* SearchMapResultsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -412,6 +427,8 @@
 				C3A99CBD26EE4FE200234D6F /* LaunchScreen.storyboard in Resources */,
 				C3A99CBA26EE4FE200234D6F /* Assets.xcassets in Resources */,
 				C390D3F826EFB9FB00E52CFD /* SearchViewController.xib in Resources */,
+				C390D40426F0137D00E52CFD /* SearchMapResultsViewController.xib in Resources */,
+				C390D40026F0136700E52CFD /* SearchListResultsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -541,15 +558,18 @@
 			files = (
 				C3E4EF1E26EF4269002F4991 /* GooglePlacesProtocol.swift in Sources */,
 				C3E4EF2426EF4B92002F4991 /* GooglePlacesService.swift in Sources */,
+				C390D3FF26F0136700E52CFD /* SearchListResultsViewController.swift in Sources */,
 				C3E4EF2726EF4DE7002F4991 /* GooglePlacesUrlProviderProtocol.swift in Sources */,
 				C390D3F726EFB9FB00E52CFD /* SearchViewController.swift in Sources */,
 				C3E4EF2B26EF6E0C002F4991 /* PlacesRepositoryProtocol.swift in Sources */,
 				C3E4EF2926EF4E96002F4991 /* GooglePlacesUrls.swift in Sources */,
+				C390D40626F0201900E52CFD /* SearchChildVCProtocol.swift in Sources */,
 				C390D3FA26EFBA3A00E52CFD /* SearchViewModel.swift in Sources */,
 				C3E4EF2F26EF6F53002F4991 /* FavoritePlacesProtocol.swift in Sources */,
 				C3E4EF2026EF4693002F4991 /* GooglePlacesResponse.swift in Sources */,
 				C3E4EF2226EF4804002F4991 /* GooglePlace.swift in Sources */,
 				C390D3FC26EFBA5300E52CFD /* SearchViewModelProtocol.swift in Sources */,
+				C390D40326F0137D00E52CFD /* SearchMapResultsViewController.swift in Sources */,
 				C3E4EF3326EF708C002F4991 /* FavoritePlaces.swift in Sources */,
 				C3A99CB126EE4FE000234D6F /* AppDelegate.swift in Sources */,
 				C3E4EF2D26EF6E4F002F4991 /* Place.swift in Sources */,
