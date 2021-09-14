@@ -23,4 +23,8 @@ protocol GooglePlacesUrlProviderProtocol {
                            keyword: String?,
                            apiKey: String,
                            responseType: GooglePlacesUrlsResponseType?) -> URL?
+    
+    /// asks the remote datasource for a url to the photo reference
+    /// - Parameter from: Place photo reference value
+    func photoUrl(from reference: String, apiKey: String) -> URL?
 }

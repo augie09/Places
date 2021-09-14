@@ -31,6 +31,10 @@ protocol GooglePlacesProtocol {
                       longitude: Double,
                       radius: Int,
                       keyword: String?) -> AnyPublisher<[GooglePlace], Error>
+    
+    /// asks the remote datasource for a url to the photo reference
+    /// - Parameter from: Place photo reference value
+    func photoUrl(from reference: String) -> URL?
 }
 
 /// Google defined place types to be used when filtering - subset

@@ -11,9 +11,6 @@ import RealmSwift
 class FavoritePlaces: FavoritePlacesProtocol {
     
     private let databaseSchemeVersion: UInt64 = 1
-    private lazy var realm: Realm = { [self] in
-        return try! Realm()
-    }()
     
     func favorite(_ place: Place) -> Place {
         if let _ = favoriteRealmPlace(with: place.id) {
@@ -21,6 +18,7 @@ class FavoritePlaces: FavoritePlacesProtocol {
             return mutate(place, favorite: true)
         }
         
+        let realm = try! Realm()
         try! realm.write({
             let realmPlace = realmPlace(from: place)
             realmPlace.favorite = true
@@ -31,7 +29,8 @@ class FavoritePlaces: FavoritePlacesProtocol {
     }
     
     func unfavorite(_ place: Place) -> Place {
-        guard !place.favorite else {
+
+        guard place.favorite else {
             //item already not favorite
             print("ERROR: item already not favorite ")
             return place
@@ -39,6 +38,7 @@ class FavoritePlaces: FavoritePlacesProtocol {
         
         if let existingFavorite = favoriteRealmPlace(with: place.id) {
             //delete local favorite
+            let realm = try! Realm()
             try! realm.write({
                 realm.delete(existingFavorite)
             })
@@ -48,7 +48,7 @@ class FavoritePlaces: FavoritePlacesProtocol {
     }
     
     func isFavorite(_ id: String) -> Bool {
-        
+
         guard let _ = favoriteRealmPlace(with: id) else {
             return false
         }
@@ -60,6 +60,7 @@ class FavoritePlaces: FavoritePlacesProtocol {
 extension FavoritePlaces {
     
     private func favoriteRealmPlace(with id: String) -> RealmPlace?{
+        let realm = try! Realm()
         return realm.object(ofType: RealmPlace.self, forPrimaryKey: id)
     }
     
@@ -77,7 +78,7 @@ extension FavoritePlaces {
         realmPlace.favorite = place.favorite
         realmPlace.latitude = place.latitude
         realmPlace.longitude = place.longitude
-        realmPlace.photo = place.photo?.absoluteString ?? ""
+        realmPlace.photo = place.photo ?? ""
         
         return realmPlace
     }
