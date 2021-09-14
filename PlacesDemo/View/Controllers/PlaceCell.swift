@@ -12,6 +12,8 @@ class PlaceCell: UITableViewCell {
     @IBOutlet var favorite: UIButton!
     @IBOutlet var quicklookContainerView : UIView!
 
+    private var delegate : PlaceCellDelegate?
+    
     lazy var placeQuickLookView : PlaceQuickLookView = {
         // init from xib
         let quicklookview = PlaceQuickLookView.loadFromNib()
@@ -37,14 +39,18 @@ class PlaceCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func load(place: Place){
+    func load(place: Place, delegate: PlaceCellDelegate){
         placeQuickLookView.load(place: place)
+        self.delegate = delegate
+        favorite.isSelected = place.favorite
     }
     
     @IBAction func favoritePressed(_ sender: Any) {
         print("favoritePressed")
-        favorite.isSelected = !favorite.isSelected
-        
+        //favorite.isSelected = !favorite.isSelected
+        if let delegate = delegate {
+            delegate.favoritePressed(self)
+        }
     }
     
 }

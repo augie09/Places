@@ -67,13 +67,23 @@ class SearchViewModel: SearchViewModelProtocol, ObservableObject, Identifiable {
         
     }
     
-    func favoriteItem(at index: IndexPath){
-        let newPlace = placesRepository.favorite(places[index.row])
-        places[index.row] = newPlace
+    // favorite button
+    func favoritePressed(for indexPath: IndexPath){
+        print("SearchViewModel: favoritePressed")
+        let place = places[indexPath.row]
+        if place.favorite {
+            places[indexPath.row] = unfavorite(place)
+        }
+        else {
+            places[indexPath.row] = favorite(place)
+        }
     }
     
-    func unfavoriteItem(at index: IndexPath){
-        let newPlace = placesRepository.unfavorite(places[index.row])
-        places[index.row] = newPlace
+    private func favorite(_ place: Place) -> Place{
+        return placesRepository.favorite(place)
+     }
+    
+    private func unfavorite(_ place: Place) -> Place{
+        return placesRepository.unfavorite(place)
     }
 }

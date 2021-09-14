@@ -80,9 +80,18 @@ extension SearchListResultsViewController : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifer) as! PlaceCell
-        cell.load(place: viewModel.places[indexPath.row])
+        cell.load(place: viewModel.places[indexPath.row], delegate: self)
         return cell
     }
-    
-    
+}
+
+extension SearchListResultsViewController : PlaceCellDelegate {
+    func favoritePressed(_ sender: UITableViewCell) {
+        print("SearchListResultsViewController: favoritePressed")
+        guard let indexPath = tableView.indexPath(for: sender) else {
+            return
+        }
+        
+        viewModel.favoritePressed(for: indexPath)
+    }
 }

@@ -21,4 +21,7 @@ protocol SearchViewModelProtocol {
 
     // other UI data
     var searchPlaceHolder : String {get}
+    
+    // favorite button
+    func favoritePressed(for indexPath: IndexPath)
 }
