@@ -96,11 +96,17 @@ extension SearchViewController {
             print("childrenVC.first!.currentChild()")
             childrenVC.first?.remove()
             add(childVC: childrenVC.last!)
+            
+            childToggleButton.setImage(UIImage.init(named: "toggleList"), for: .normal)
+            childToggleButton.setTitle("List", for: .normal)
         }
         else {
             print("NOT childrenVC.first!.currentChild()")
             childrenVC.last?.remove()
             add(childVC: childrenVC.first!)
+        
+            childToggleButton.setImage(UIImage.init(named: "togglePin"), for: .normal)
+            childToggleButton.setTitle("Map", for: .normal)
         }
     }
 }
