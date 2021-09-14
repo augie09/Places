@@ -34,6 +34,8 @@ class SearchListResultsViewController: UIViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = UITableView.automaticDimension
         tableView.backgroundColor = UIColor.systemGroupedBackground
+        let topInset: CGFloat = 10
+        tableView.contentInset.top = topInset
         bind()
     }
 

@@ -41,4 +41,10 @@ class PlaceCell: UITableViewCell {
         placeQuickLookView.load(place: place)
     }
     
+    @IBAction func favoritePressed(_ sender: Any) {
+        print("favoritePressed")
+        favorite.isSelected = !favorite.isSelected
+        
+    }
+    
 }
