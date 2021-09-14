@@ -14,6 +14,7 @@ class SearchListResultsViewController: UIViewController {
     
     private let viewModel : SearchViewModelProtocol
     private var cancellables: Set<AnyCancellable> = []
+    private let cellIdentifer = "PlaceCell"
     
     //MARK: INIT
     init(viewModel: SearchViewModelProtocol){
@@ -28,7 +29,8 @@ class SearchListResultsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("viewDidLoad: SearchListResultsViewController")
-        
+        tableView.register(UINib(nibName: cellIdentifer, bundle: nil), forCellReuseIdentifier: cellIdentifer)
+
         bind()
     }
 
@@ -46,9 +48,9 @@ class SearchListResultsViewController: UIViewController {
     //MARK: BINDING
     func bind() {
         viewModel.placesPublisher
-            .receive(on: DispatchQueue.main)
-            .sink{ places in
-                print(places.count)
+            .receive(on: RunLoop.main)
+            .sink{ [weak self] places in
+                self?.tableView.reloadData()  //FIXME:- reload is an expensive UI operation, suggest moving to diffable data source, but we'd need to handle MapKit view that is sharing this ViewModel.
             }
             .store(in: &cancellables)
     }
@@ -63,12 +65,14 @@ extension SearchListResultsViewController : UITableViewDelegate {
 extension SearchListResultsViewController : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
+        return viewModel.places.count
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifer) as! PlaceCell
+        cell.load(place: viewModel.places[indexPath.row])
+        return cell
     }
     
     

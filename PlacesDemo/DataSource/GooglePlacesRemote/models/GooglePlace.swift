@@ -14,7 +14,7 @@ struct GooglePlace : Codable {
     let user_ratings_total: Int?
     let name: String
     let price_level: Int?
-    private let photos: [GooglePlacesPhotoReference]
+    private let photos: [GooglePlacesPhotoReference]?
     private let geometry: GooglePlacesGeometry
     
     /// Coordinates of this place
