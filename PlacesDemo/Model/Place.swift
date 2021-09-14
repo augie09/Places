@@ -20,4 +20,10 @@ struct Place {
     let longitude: Double
     let photo: URL?
 
+    func priceLevelSigns() -> String {
+        guard let priceLevel = priceLevel, priceLevel > 0 else {
+            return ""
+        }
+        return String.init(repeating: "$", count: priceLevel)
+    }
 }

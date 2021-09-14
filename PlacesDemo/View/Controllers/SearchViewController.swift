@@ -18,10 +18,10 @@ class SearchViewController: UIViewController {
     private let viewModel : SearchViewModelProtocol
     private var cancellables: Set<AnyCancellable> = []
     
-    private var childrenVC: [SearchChildVCProtocol]
+    private var childrenVC: [UIViewController]
     
     //MARK: INIT
-    init(viewModel: SearchViewModelProtocol, childrenVC: [SearchChildVCProtocol]) {
+    init(viewModel: SearchViewModelProtocol, childrenVC: [UIViewController]) {
         self.viewModel = viewModel
         self.childrenVC = childrenVC
         super.init(nibName: "SearchViewController", bundle: nil)
@@ -36,20 +36,7 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
         print("viewDidLoad: \(childrenVC.count)")
         toggle()
-        bind()
-
     }
-
-    //MARK: BINDING
-    func bind() {
-        viewModel.placesPublisher
-            .receive(on: DispatchQueue.main)
-            .sink{ places in
-                print(places.count)
-            }
-            .store(in: &cancellables)
-    }
-
 }
 
 extension SearchViewController: UISearchBarDelegate {

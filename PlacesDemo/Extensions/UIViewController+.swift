@@ -1,18 +1,14 @@
 //
-//  SearchChildVCProtocol.swift
+//  UIViewController+.swift
 //  PlacesDemo
 //
-//  Created by August Patterson on 9/13/21.
+//  Created by August Patterson on 9/14/21.
 //
 
 import UIKit
 
-protocol SearchChildVCProtocol: UIViewController {
-    func remove()
-    func currentChild() -> Bool
-}
-
-extension SearchChildVCProtocol {
+extension UIViewController {
+    
     func remove() {
         // Just to be safe, we check that this view controller
         // is actually added to a parent before removing it.

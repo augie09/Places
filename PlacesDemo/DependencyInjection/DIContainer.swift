@@ -35,7 +35,7 @@ class DIContainer {
         // Register ViewModels
         container.register(SearchViewModelProtocol.self) { r in
             SearchViewModel.init(repo: r.resolve(PlacesRepositoryProtocol.self)!)
-        }
+        }.inObjectScope(.container)
         
         // Register ViewControllers
         container.autoregister(SearchListResultsViewController.self, initializer: SearchListResultsViewController.init)
