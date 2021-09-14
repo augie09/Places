@@ -10,6 +10,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchViewController" customModule="PlacesDemo" customModuleProvider="target">
             <connections>
+                <outlet property="childToggleButton" destination="pd8-QU-kTP" id="KWG-Bf-QFf"/>
+                <outlet property="containerView" destination="YI4-k2-hj6" id="iCr-8N-s06"/>
                 <outlet property="filterButton" destination="ymm-yz-uF5" id="9gf-tJ-2BD"/>
                 <outlet property="searchBar" destination="0rf-ZL-hJI" id="ll0-eP-iZy"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -20,7 +22,11 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y8N-ms-C1f">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YI4-k2-hj6" userLabel="containerView">
+                    <rect key="frame" x="0.0" y="128" width="414" height="734"/>
+                    <color key="backgroundColor" systemColor="systemYellowColor"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y8N-ms-C1f" userLabel="fauxNavBar">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="128"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ymm-yz-uF5">
@@ -45,12 +51,25 @@
                         <constraint firstItem="ymm-yz-uF5" firstAttribute="centerY" secondItem="0rf-ZL-hJI" secondAttribute="centerY" id="f0a-kh-jVf"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pd8-QU-kTP">
+                    <rect key="frame" x="184" y="792" width="46" height="30"/>
+                    <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="toggleChild:" destination="-1" eventType="touchUpInside" id="4Ms-Ln-OZQ"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemTealColor"/>
             <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="YI4-k2-hj6" secondAttribute="bottom" id="3wn-sX-ioH"/>
                 <constraint firstItem="y8N-ms-C1f" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="AZK-Hq-R8l"/>
+                <constraint firstItem="pd8-QU-kTP" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="Njv-yV-j3i"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="pd8-QU-kTP" secondAttribute="bottom" constant="40" id="Nuk-Oi-2bC"/>
                 <constraint firstItem="y8N-ms-C1f" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="S4G-th-xaz"/>
+                <constraint firstItem="YI4-k2-hj6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Sbu-aX-G1X"/>
+                <constraint firstItem="YI4-k2-hj6" firstAttribute="top" secondItem="y8N-ms-C1f" secondAttribute="bottom" id="WZO-t8-jK6"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="YI4-k2-hj6" secondAttribute="trailing" id="qmF-hU-OgH"/>
                 <constraint firstItem="y8N-ms-C1f" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="tx6-fr-y15"/>
             </constraints>
             <point key="canvasLocation" x="100.00000000000001" y="48.883928571428569"/>
@@ -62,6 +81,9 @@
         </systemColor>
         <systemColor name="systemTealColor">
             <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

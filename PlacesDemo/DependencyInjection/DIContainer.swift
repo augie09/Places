@@ -38,8 +38,11 @@ class DIContainer {
         }
         
         // Register ViewControllers
-        container.autoregister(SearchViewController.self, initializer: SearchViewController.init)
-        
+        container.autoregister(SearchListResultsViewController.self, initializer: SearchListResultsViewController.init)
+        container.autoregister(SearchMapResultsViewController.self, initializer: SearchMapResultsViewController.init)
+        container.register(SearchViewController.self) { r in
+            SearchViewController.init(viewModel: r.resolve(SearchViewModelProtocol.self)!,
+                                      childrenVC: [r.resolve(SearchListResultsViewController.self)!, r.resolve(SearchMapResultsViewController.self)!])}
         
     }
     
