@@ -116,6 +116,14 @@ extension SearchMapResultsViewController: MKMapViewDelegate {
         annotationView.image = #imageLiteral(resourceName: "mapPin")
         return annotationView
     }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        view.image = #imageLiteral(resourceName: "mapPinSelected")
+    }
+    
+    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+        view.image = #imageLiteral(resourceName: "mapPin")
+    }
 }
 
 extension SearchMapResultsViewController: PlaceQuickLookViewDelegate {

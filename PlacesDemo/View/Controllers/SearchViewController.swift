@@ -48,7 +48,8 @@ class SearchViewController: UIViewController {
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.searchBar.placeholder = viewModel.searchPlaceHolder
         searchController.searchBar.delegate = self
-        
+        searchController.searchBar.magnifyingTint(#colorLiteral(red: 0.2588235294, green: 0.5411764706, blue: 0.07450980392, alpha: 1))
+        searchController.searchBar.tintColor = #colorLiteral(red: 0.2588235294, green: 0.5411764706, blue: 0.07450980392, alpha: 1)
         return searchController
     }()
 
@@ -64,7 +65,10 @@ class SearchViewController: UIViewController {
         view.addSubview(dummyView)
         view.sendSubviewToBack(dummyView)
         
-        navigationItem.title = "Places"  //FIXME- localized string
+        //navigationItem.title = "Places"  //FIXME- localized string
+        let logo : UIImage = #imageLiteral(resourceName: "logo")
+        let imageView = UIImageView(image:logo)
+        self.navigationItem.titleView = imageView
     }
 
 }
