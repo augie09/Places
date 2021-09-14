@@ -30,7 +30,10 @@ class SearchListResultsViewController: UIViewController {
         super.viewDidLoad()
         print("viewDidLoad: SearchListResultsViewController")
         tableView.register(UINib(nibName: cellIdentifer, bundle: nil), forCellReuseIdentifier: cellIdentifer)
-
+        tableView.tableFooterView = UIView()
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = UITableView.automaticDimension
+        tableView.backgroundColor = UIColor.systemGroupedBackground
         bind()
     }
 
@@ -58,7 +61,11 @@ class SearchListResultsViewController: UIViewController {
 }
 
 extension SearchListResultsViewController : UITableViewDelegate {
-    
+
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.contentView.backgroundColor = UIColor.clear
+        cell.backgroundColor = UIColor.clear
+    }
 }
 
 

@@ -10,11 +10,15 @@ import Combine
 
 protocol SearchViewModelProtocol {
     
-    var placesPublisher: Published<[Place]>.Publisher {get}
-    var places: [Place] {get}
-    var textSubject: CurrentValueSubject<String, Never> {get set}
-    
     init(repo: PlacesRepositoryProtocol)
     
-    func fetchPlaces(with searchText: String?)
+    // Places DataSource and Pubhlisher
+    var placesPublisher: Published<[Place]>.Publisher {get}
+    var places: [Place] {get}
+    
+    // Subject for ViewControllers to send search text changes to
+    var textSubject: CurrentValueSubject<String, Never> {get set}
+
+    // other UI data
+    var searchPlaceHolder : String {get}
 }

@@ -10,7 +10,7 @@ import Combine
 
 class SearchViewController: UIViewController {
 
-    @IBOutlet var searchBar: UISearchBar!
+   // @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var filterButton: UIButton!
     @IBOutlet var childToggleButton: UIButton!
     @IBOutlet var containerView: UIView!
@@ -34,9 +34,37 @@ class SearchViewController: UIViewController {
     //MARK: VIEW LIFECYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("viewDidLoad: \(childrenVC.count)")
+
+        setupNavigationBar()
+
         toggle()
     }
+    
+    private lazy var searchController: UISearchController = {
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.searchBar.placeholder = viewModel.searchPlaceHolder
+        searchController.searchBar.delegate = self
+        
+        return searchController
+    }()
+
+    private func setupNavigationBar() {
+        navigationItem.searchController = searchController
+        
+        self.navigationController?.navigationBar.barTintColor = UIColor.white
+        self.navigationController?.navigationBar.backgroundColor = UIColor.white
+        self.navigationController?.addCustomBottomLine(color: UIColor.lightGray, height: 0.5)
+
+        // prevent nav bar collapsing when user scrolls - borrowed from StackOverflow
+        let dummyView = UIView()
+        view.addSubview(dummyView)
+        view.sendSubviewToBack(dummyView)
+        
+        navigationItem.title = "Places"  //FIXME- localized string
+    }
+
 }
 
 extension SearchViewController: UISearchBarDelegate {
@@ -76,3 +104,4 @@ extension SearchViewController {
         }
     }
 }
+

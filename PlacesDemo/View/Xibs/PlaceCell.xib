@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,35 +17,49 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="77"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z8T-VT-gAz">
-                        <rect key="frame" x="10" y="10" width="300" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CZX-cP-6X2">
-                        <rect key="frame" x="10" y="41" width="300" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cellCardBorder" translatesAutoresizingMaskIntoConstraints="NO" id="oKO-Dv-xlj">
+                        <rect key="frame" x="24" y="4" width="272" height="69"/>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GtM-1t-HBx">
+                        <rect key="frame" x="36" y="16" width="220" height="45"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uqH-Qs-vEK">
+                        <rect key="frame" x="258" y="20" width="22" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="22" id="Nlh-il-gjx"/>
+                            <constraint firstAttribute="height" constant="22" id="a0O-nF-mQF"/>
+                        </constraints>
+                        <state key="normal" image="heart"/>
+                    </button>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="CZX-cP-6X2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="F4J-OM-Afu"/>
-                    <constraint firstAttribute="trailing" secondItem="CZX-cP-6X2" secondAttribute="trailing" constant="10" id="GlV-Jk-ugJ"/>
-                    <constraint firstAttribute="trailing" secondItem="z8T-VT-gAz" secondAttribute="trailing" constant="10" id="MSY-kS-Sa7"/>
-                    <constraint firstAttribute="bottom" secondItem="CZX-cP-6X2" secondAttribute="bottom" constant="10" id="Ncl-zn-ElH"/>
-                    <constraint firstItem="z8T-VT-gAz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="PTu-pM-4NM"/>
-                    <constraint firstItem="CZX-cP-6X2" firstAttribute="top" secondItem="z8T-VT-gAz" secondAttribute="bottom" constant="10" id="ao3-y4-biL"/>
-                    <constraint firstItem="z8T-VT-gAz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="v2E-LM-lHi"/>
+                    <constraint firstItem="oKO-Dv-xlj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="09r-4W-q36"/>
+                    <constraint firstItem="GtM-1t-HBx" firstAttribute="bottom" secondItem="oKO-Dv-xlj" secondAttribute="bottom" constant="-12" id="5r0-AO-rZA"/>
+                    <constraint firstAttribute="bottom" secondItem="oKO-Dv-xlj" secondAttribute="bottom" constant="4" id="6g6-1k-KE1"/>
+                    <constraint firstItem="uqH-Qs-vEK" firstAttribute="leading" secondItem="GtM-1t-HBx" secondAttribute="trailing" constant="2" id="Alb-C3-d4N"/>
+                    <constraint firstAttribute="trailing" secondItem="oKO-Dv-xlj" secondAttribute="trailing" constant="24" id="F4Z-rg-s8W"/>
+                    <constraint firstItem="uqH-Qs-vEK" firstAttribute="trailing" secondItem="oKO-Dv-xlj" secondAttribute="trailing" constant="-16" id="Hta-P0-bSM"/>
+                    <constraint firstItem="GtM-1t-HBx" firstAttribute="top" secondItem="oKO-Dv-xlj" secondAttribute="top" constant="12" id="QoI-Hs-Aw5"/>
+                    <constraint firstItem="uqH-Qs-vEK" firstAttribute="top" secondItem="oKO-Dv-xlj" secondAttribute="top" constant="16" id="WrM-dW-msp"/>
+                    <constraint firstItem="oKO-Dv-xlj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="YmN-kJ-Z6V"/>
+                    <constraint firstItem="GtM-1t-HBx" firstAttribute="leading" secondItem="oKO-Dv-xlj" secondAttribute="leading" constant="12" id="nH2-xZ-SKI"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="subtitle" destination="CZX-cP-6X2" id="Ek0-3Q-Oyf"/>
-                <outlet property="title" destination="z8T-VT-gAz" id="gtc-Lw-JTu"/>
+                <outlet property="favorite" destination="uqH-Qs-vEK" id="5hM-Zd-bb4"/>
+                <outlet property="quicklookContainerView" destination="GtM-1t-HBx" id="RpE-LA-vhp"/>
             </connections>
             <point key="canvasLocation" x="118.84057971014494" y="100.78125"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="cellCardBorder" width="17" height="96"/>
+        <image name="heart" width="22" height="20"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

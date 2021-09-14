@@ -22,6 +22,8 @@ class SearchViewModel: SearchViewModelProtocol, ObservableObject, Identifiable {
     private var latitude : Double = -33.8670522  //FIXME:- get from CoreLocation
     private var longitude: Double = 151.1957362
     
+    var searchPlaceHolder : String { return "Search for a restaurant"}  //FIXME:- move to a localized string file
+    
     //MARK: INIT
     required init(repo: PlacesRepositoryProtocol){
         self.placesRepository = repo

@@ -9,11 +9,22 @@ import UIKit
 
 class PlaceCell: UITableViewCell {
     
-    @IBOutlet var title: UILabel!
-    @IBOutlet var subtitle: UILabel!
-//    @IBOutlet var thumbnail: UIImageView!
-//    @IBOutlet var favorite: UIButton!
-//    @IBOutlet var ratings: UIView!
+    @IBOutlet var favorite: UIButton!
+    @IBOutlet var quicklookContainerView : UIView!
+
+    lazy var placeQuickLookView : PlaceQuickLookView = {
+        // init from xib
+        let quicklookview = PlaceQuickLookView.loadFromNib()
+        self.quicklookContainerView.addSubview(quicklookview)
+        
+        // add constraints for table cell
+        quicklookview.leadingAnchor.constraint(equalTo:  quicklookContainerView.leadingAnchor).isActive = true
+        quicklookview.topAnchor.constraint(equalTo:  quicklookContainerView.topAnchor).isActive = true
+        quicklookview.bottomAnchor.constraint(equalTo:  quicklookContainerView.bottomAnchor).isActive = true
+        quicklookview.trailingAnchor.constraint(equalTo:  quicklookContainerView.trailingAnchor).isActive = true
+
+        return quicklookview
+    }()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,8 +38,7 @@ class PlaceCell: UITableViewCell {
     }
     
     func load(place: Place){
-        title.text = place.name
-        subtitle.text = "\(place.priceLevelSigns()) - Supporting Text"
+        placeQuickLookView.load(place: place)
     }
     
 }
