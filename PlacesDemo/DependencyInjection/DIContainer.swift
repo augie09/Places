@@ -4,6 +4,9 @@
 //
 //  Created by August Patterson on 9/13/21.
 //
+//  Classes used in the app are registered with the resolver here
+//  Dependencies are injected via constructors
+//  See Swinject Github for more information
 
 import Foundation
 import Swinject

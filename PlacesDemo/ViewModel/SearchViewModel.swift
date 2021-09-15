@@ -23,9 +23,7 @@ class SearchViewModel: SearchViewModelProtocol, ObservableObject, Identifiable {
     // currently we only need to get location once, even though it is setup for event streaming
     var firstKnownLocation: CurrentValueSubject<(latitude: Double, longitude: Double)?, Never> = CurrentValueSubject.init(nil)
     let radius: Int = 1500
-//
-//    private var latitude : Double = -33.8670522  //FIXME:- get from CoreLocation
-//    private var longitude: Double = 151.1957362
+
     // Static data for UI
     var searchPlaceHolder : String { return "Search for a restaurant"}  //FIXME:- move to a localized string file
     
@@ -113,10 +111,16 @@ class SearchViewModel: SearchViewModelProtocol, ObservableObject, Identifiable {
         }
     }
     
+    /// Favorite a Place
+    /// - Parameter place: Place
+    /// - Returns: The Place after datalayer processed the favorite request
     private func favorite(_ place: Place) -> Place{
         return placesRepository.favorite(place)
      }
     
+    /// Unfavorite a Place
+    /// - Parameter place: Place
+    /// - Returns: The Place after datalayer processed the unfavorite request
     private func unfavorite(_ place: Place) -> Place{
         return placesRepository.unfavorite(place)
     }

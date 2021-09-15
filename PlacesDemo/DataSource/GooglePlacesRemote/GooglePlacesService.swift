@@ -4,6 +4,9 @@
 //
 //  Created by August Patterson on 9/13/21.
 //
+//  This is a basic webservice implementation
+//  It does not include Request Retriers or Adapters
+//  URLS are constructed by a GooglePlacesUrlProviderProtocol
 
 import Foundation
 import Combine

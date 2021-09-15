@@ -7,6 +7,7 @@
 //
 
 // GooglePlacesProtocol represents the highest level interface with the google places remote service
+// The API KEY is injected at constructor time, check Info.plist of XCConfig files for the actual value
 
 import Foundation
 import Combine

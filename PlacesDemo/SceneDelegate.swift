@@ -30,7 +30,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         
         //FIXME:- move all of this to a coordinator
+        // Init a Navigation Controller
         let navController = UINavigationController.init()
+        // Init primary View Controller - Search View Parent Controller
         let initialViewController = container.resolve(type: SearchViewController.self)!
         navController.setViewControllers([initialViewController], animated: false)
         window?.rootViewController = navController

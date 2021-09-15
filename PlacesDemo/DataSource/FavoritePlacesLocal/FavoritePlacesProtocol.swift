@@ -9,10 +9,16 @@ import Foundation
 
 protocol FavoritePlacesProtocol {
     
+    /// Save a place as a favorite
+    /// - Parameter place: Place
     func favorite(_ place: Place) -> Place
     
+    /// Remove a place from favorites
+    /// - Parameter place: Place
     func unfavorite(_ place: Place) -> Place
     
+    /// Determine if a place is a favorite
+    /// - Parameter id: Place Id
     func isFavorite(_ id: String) -> Bool
 
 }

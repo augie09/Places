@@ -4,6 +4,11 @@
 //
 //  Created by August Patterson on 9/13/21.
 //
+//  Note.  It was found during testing that Google places does not respect search radius as per documentation at
+//  https://developers.google.com/maps/documentation/places/web-service/search-nearby
+/*   You may bias results to a specified circle by passing a location and a radius parameter. Doing so instructs the Places service to prefer showing results within that circle; results outside of the defined area may still be displayed.
+ */
+//  To handle this, we need a feature update that removes results outside the search area before providing to the viewmodel.  Due to time constraints this has yet to be implemented
 
 import UIKit
 import Combine
@@ -11,9 +16,13 @@ import MapKit
 
 class SearchMapResultsViewController: UIViewController {
 
+    // IBOutlets
     @IBOutlet private var mapView: MKMapView!
     
+    // Dependencies
     private let viewModel : SearchViewModelProtocol
+    
+    // Combine
     private var cancellables: Set<AnyCancellable> = []
     
     //MARK: INIT
@@ -26,22 +35,17 @@ class SearchMapResultsViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: VIEW LIFECYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
         print("viewDidLoad: SearchMapResultsViewController")
-        mapView.register(MKAnnotationView.self, forAnnotationViewWithReuseIdentifier: NSStringFromClass(PlaceAnnotation.self))
-        mapView.delegate = self
+        setupMapView()
         bind()
     }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        print("viewWillAppear: SearchMapResultsViewController")
-    }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        print("viewDidAppear: SearchMapResultsViewController")
+    func setupMapView(){
+        mapView.register(MKAnnotationView.self, forAnnotationViewWithReuseIdentifier: NSStringFromClass(PlaceAnnotation.self))
+        mapView.delegate = self
     }
     
     //MARK: MKAnnotations
@@ -54,6 +58,10 @@ class SearchMapResultsViewController: UIViewController {
         didSet {
             if let newAnnotations = displayedAnnotations {
                 mapView.addAnnotations(newAnnotations)
+               
+                // replace above line with this line if we want map to autozoom so all places are shown
+                // see comment at top about google api as to why this is not implemented yet
+                //mapView.showAnnotations(newAnnotations, animated: true)
             }
         }
     }
@@ -130,8 +138,6 @@ extension SearchMapResultsViewController: PlaceQuickLookViewDelegate {
     func photoUrl(from reference: String) -> URL? {
         return viewModel.photoUrl(from: reference)
     }
-    
-    
 }
 
 class PlaceAnnotation : NSObject, MKAnnotation {

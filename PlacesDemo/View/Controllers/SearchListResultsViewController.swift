@@ -10,10 +10,16 @@ import Combine
 
 class SearchListResultsViewController: UIViewController {
 
+    // IBOutlets
     @IBOutlet var tableView: UITableView!
     
+    // Dependencies
     private let viewModel : SearchViewModelProtocol
+    
+    // Combine
     private var cancellables: Set<AnyCancellable> = []
+    
+    // private properties
     private let cellIdentifer = "PlaceCell"
     
     //MARK: INIT
@@ -26,9 +32,15 @@ class SearchListResultsViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: VIEW LIFECYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
         print("viewDidLoad: SearchListResultsViewController")
+        setupTableView()
+        bind()
+    }
+    
+    func setupTableView(){
         tableView.register(UINib(nibName: cellIdentifer, bundle: nil), forCellReuseIdentifier: cellIdentifer)
         tableView.tableFooterView = UIView()
         tableView.rowHeight = UITableView.automaticDimension
@@ -36,26 +48,14 @@ class SearchListResultsViewController: UIViewController {
         tableView.backgroundColor = UIColor.systemGroupedBackground
         let topInset: CGFloat = 10
         tableView.contentInset.top = topInset
-        bind()
     }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        print("viewWillAppear: SearchListResultsViewController")
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        print("viewDidAppear: SearchListResultsViewController")
-    }
-    
     
     //MARK: BINDING
     func bind() {
         viewModel.placesPublisher
             .receive(on: RunLoop.main)
             .sink{ [weak self] places in
-                self?.tableView.reloadData()  //FIXME:- reload is an expensive UI operation, suggest moving to diffable data source, but we'd need to handle MapKit view that is sharing this ViewModel.
+                self?.tableView.reloadData()  //FIXME:- reload is an expensive UI operation, suggest moving to diffable data source, but we'd need to handle MapKit view that is sharing this ViewModelProtocol
             }
             .store(in: &cancellables)
     }

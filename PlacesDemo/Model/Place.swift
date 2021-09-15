@@ -24,6 +24,6 @@ struct Place {
         guard let priceLevel = priceLevel, priceLevel > 0 else {
             return ""
         }
-        return String.init(repeating: "$", count: priceLevel)
+        return String.init(repeating: "$", count: priceLevel)  //FIXME:- move $ to localization file
     }
 }
