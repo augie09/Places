@@ -4,6 +4,9 @@
 //
 //  Created by August Patterson on 9/13/21.
 //
+//  Classes used in the app are registered with the resolver here
+//  Dependencies are injected via constructors
+//  See Swinject Github for more information
 
 import Foundation
 import Swinject
@@ -13,6 +16,11 @@ class DIContainer {
     private let container = Container()
     
     func configure() {
+        
+        // Register our utilities
+        container.register(LocationUtilityProtocol.self) { _ in
+            LocationUtility()
+        }
         
         // Register our Datasources
         container.register(FavoritePlacesProtocol.self) { _ in
@@ -34,7 +42,7 @@ class DIContainer {
         
         // Register ViewModels
         container.register(SearchViewModelProtocol.self) { r in
-            SearchViewModel.init(repo: r.resolve(PlacesRepositoryProtocol.self)!)
+            SearchViewModel.init(repo: r.resolve(PlacesRepositoryProtocol.self)!, locationService: r.resolve(LocationUtilityProtocol.self)!)
         }.inObjectScope(.container)
         
         // Register ViewControllers

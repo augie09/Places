@@ -4,7 +4,9 @@
 //
 //  Created by August Patterson on 9/13/21.
 //
-//  This is a model of a Google Places api response object for a single Google Place
+//  This is a model of a Google Places api response object for a single Google Place5
+//  Note:  The fields returned by the google api can be changed based on requested fields
+//          This is only a small subset of potential fields returned
 
 import Foundation
 

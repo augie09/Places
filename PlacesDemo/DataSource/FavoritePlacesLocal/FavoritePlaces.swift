@@ -4,6 +4,9 @@
 //
 //  Created by August Patterson on 9/13/21.
 //
+//  This implementation of FavoritePlacesProtocol uses RealmSwift as an internal Datasource
+//  To encapsulate RealmSwift implementation, Place model is transformed to RealmPlace models
+//     and vice versa as needed
 
 import Foundation
 import RealmSwift
@@ -12,6 +15,8 @@ class FavoritePlaces: FavoritePlacesProtocol {
     
     private let databaseSchemeVersion: UInt64 = 1
     
+    
+    //MARK: PROTOCOL METHODS
     func favorite(_ place: Place) -> Place {
         if let _ = favoriteRealmPlace(with: place.id) {
             // place is already a favorite
@@ -68,7 +73,12 @@ extension FavoritePlaces {
         return Place.init(id: place.id, name: place.name, rating: place.rating, totalRatings: place.totalRatings, priceLevel: place.priceLevel, favorite: favorite, latitude: place.latitude, longitude: place.longitude, photo: place.photo)
     }
     
+    /// Transform Place to RealmPlace
+    /// - Parameter place: Place
+    /// - Returns: RealmPlace
     private func realmPlace(from place: Place) -> RealmPlace {
+        
+        // Codable would also be an option here
         let realmPlace = RealmPlace.init()
         realmPlace.ids = place.id
         realmPlace.name = place.name

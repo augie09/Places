@@ -4,22 +4,32 @@
 //
 //  Created by August Patterson on 9/13/21.
 //
+//  This is currenlty the root view in the root Navigation controller
+//  This view controller provided a Search Controller and a Container for Search Result Controllers
+//
+//  The current toggle implementation of switching between children view controllers is basic
+//  The state of which child controller is presented and the appearance of the toggle button
+//    is currently managed by this view controller.
+//      This can be improved.  Suggest looking into CollectionView with Paging enabled or PageViewControllers
+//                                  and a state object
 
 import UIKit
 import Combine
 
 class SearchViewController: UIViewController {
 
-   // @IBOutlet var searchBar: UISearchBar!
+    // IBOutlets
     @IBOutlet var filterButton: UIButton!
     @IBOutlet var childToggleButton: UIButton!
     @IBOutlet var containerView: UIView!
     
+    // Dependencies
     private let viewModel : SearchViewModelProtocol
-    private var cancellables: Set<AnyCancellable> = []
-    
     private var childrenVC: [UIViewController]
-    
+
+    // Combine cancellables
+    private var cancellables: Set<AnyCancellable> = []
+
     //MARK: INIT
     init(viewModel: SearchViewModelProtocol, childrenVC: [UIViewController]) {
         self.viewModel = viewModel
@@ -38,18 +48,23 @@ class SearchViewController: UIViewController {
         setupNavigationBar()
 
         toggle()
+        
+        viewModel.viewDidLoad()
     }
     
+    // Search Controller Setup
     private lazy var searchController: UISearchController = {
         let searchController = UISearchController(searchResultsController: nil)
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.searchBar.placeholder = viewModel.searchPlaceHolder
         searchController.searchBar.delegate = self
-        
+        searchController.searchBar.magnifyingTint(#colorLiteral(red: 0.2588235294, green: 0.5411764706, blue: 0.07450980392, alpha: 1))
+        searchController.searchBar.tintColor = #colorLiteral(red: 0.2588235294, green: 0.5411764706, blue: 0.07450980392, alpha: 1)
         return searchController
     }()
 
+    // Navigation Setup
     private func setupNavigationBar() {
         navigationItem.searchController = searchController
         
@@ -62,19 +77,25 @@ class SearchViewController: UIViewController {
         view.addSubview(dummyView)
         view.sendSubviewToBack(dummyView)
         
-        navigationItem.title = "Places"  //FIXME- localized string
+        //navigationItem.title = "Places"  //FIXME- localized string
+        let logo : UIImage = #imageLiteral(resourceName: "logo")
+        let imageView = UIImageView(image:logo)
+        self.navigationItem.titleView = imageView
     }
 
 }
 
 extension SearchViewController: UISearchBarDelegate {
+    
+    // Send all keystrokes to thew ViewModel
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
         print("search bar: \(searchText)")
         viewModel.textSubject.send(searchText)
     }
 }
 
-//FIXME:- probably should explore UIPageViewController option, or at least CollectionView with paging enabled
+//MARK: Children Management
+//FIXME:- see comment at top, state management between toggle switch and children needs improvement
 extension SearchViewController {
     
     @IBAction func toggleChild(_ sender: Any) {
@@ -83,7 +104,6 @@ extension SearchViewController {
     }
     
     func add(childVC: UIViewController){
-        print("add")
         addChild(childVC)
         containerView.addSubview(childVC.view)
         childVC.view.frame = containerView.bounds
@@ -93,7 +113,6 @@ extension SearchViewController {
 
     func toggle() {
         if childrenVC.first!.currentChild() {
-            print("childrenVC.first!.currentChild()")
             childrenVC.first?.remove()
             add(childVC: childrenVC.last!)
             
@@ -101,7 +120,6 @@ extension SearchViewController {
             childToggleButton.setTitle("List", for: .normal)
         }
         else {
-            print("NOT childrenVC.first!.currentChild()")
             childrenVC.last?.remove()
             add(childVC: childrenVC.first!)
         
