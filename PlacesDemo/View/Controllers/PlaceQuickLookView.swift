@@ -24,6 +24,7 @@ class PlaceQuickLookView: UIView {
         nibView.title.translatesAutoresizingMaskIntoConstraints = false
         nibView.subtitle.translatesAutoresizingMaskIntoConstraints = false
         nibView.translatesAutoresizingMaskIntoConstraints = false
+        nibView.ratings.isUserInteractionEnabled = false
         return nibView
     }
     
