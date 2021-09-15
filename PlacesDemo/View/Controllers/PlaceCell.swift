@@ -49,7 +49,7 @@ class PlaceCell: UITableViewCell {
     
     @IBAction func favoritePressed(_ sender: Any) {
         print("favoritePressed")
-        //favorite.isSelected = !favorite.isSelected
+
         if let delegate = delegate {
             delegate.favoritePressed(self)
         }

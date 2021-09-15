@@ -34,10 +34,10 @@
                     </constraints>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xH7-6y-OJe" customClass="CosmosView" customModule="Cosmos">
-                    <rect key="frame" x="80" y="74" width="100" height="16"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <rect key="frame" x="80" y="74" width="175" height="16"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="100" id="Cur-YV-Gq0"/>
+                        <constraint firstAttribute="width" constant="175" id="Cur-YV-Gq0"/>
                         <constraint firstAttribute="height" constant="16" id="z5I-iI-X5A"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
@@ -48,7 +48,7 @@
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="xH7-6y-OJe" firstAttribute="leading" secondItem="GQP-15-esi" secondAttribute="trailing" constant="16" id="3YE-Kd-q2x"/>
                 <constraint firstItem="xH7-6y-OJe" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" priority="700" id="CxJ-hR-vXu"/>
@@ -60,6 +60,7 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="j7T-mz-1Ua" secondAttribute="bottom" priority="900" id="Lvr-h0-9Vc"/>
                 <constraint firstItem="j7T-mz-1Ua" firstAttribute="leading" secondItem="GQP-15-esi" secondAttribute="trailing" constant="16" id="M8m-D3-Vjx"/>
                 <constraint firstItem="xH7-6y-OJe" firstAttribute="top" secondItem="VUg-hs-b1M" secondAttribute="bottom" constant="3" id="bcW-XH-FF0"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="xH7-6y-OJe" secondAttribute="trailing" priority="500" id="eBd-RR-8rj"/>
                 <constraint firstItem="VUg-hs-b1M" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" priority="900" id="g7v-c1-MRh"/>
                 <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="GQP-15-esi" secondAttribute="bottom" priority="750" id="tSh-9U-JWy"/>
                 <constraint firstItem="VUg-hs-b1M" firstAttribute="leading" secondItem="GQP-15-esi" secondAttribute="trailing" constant="16" id="xO7-SF-Rzj"/>
@@ -86,9 +87,6 @@
         <image name="thumbnail" width="128" height="128"/>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
